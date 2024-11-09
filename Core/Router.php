@@ -57,12 +57,14 @@ class Router
                 //to check for middleware
                 if ($route['middleware']['name'] === 'guest'){
                     if ($_SESSION['user'] ?? false){
-                        header("location: {$route['middleware']['redirectUrl']}");
+                        redirect("{$route['middleware']['redirectUrl']}");
+//                        header("location: {$route['middleware']['redirectUrl']}");
                         exit();
                     }
                 } elseif ($route['middleware']['name'] === 'auth'){
                     if (!isset($_SESSION['user'])){
-                        header("location: {$route['middleware']['redirectUrl']}");
+                        redirect("{$route['middleware']['redirectUrl']}");
+//                        header("location: {$route['middleware']['redirectUrl']}");
                         exit();
                     }
                 }

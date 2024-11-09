@@ -1,7 +1,5 @@
 <?php
 
-use Core\Validators;
-
 $heading = "Registration";
 
 $inputErrors = [];

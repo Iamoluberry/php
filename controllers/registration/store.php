@@ -39,8 +39,14 @@ if (!empty($inputErrors)) {
         if ($user) {
 
             //user already exist so user is redirected to login page
-            header("Location: /login");
-            exit;
+            $inputErrors['error'] = "User already exists, Kindly use another email";
+            return require view("registration/index.view.php", [
+                "heading" => "Registration",
+                "inputErrors" => $inputErrors
+            ]);
+//
+//            header("Location: /login");
+//            exit;
 
         } else {
 
@@ -56,7 +62,7 @@ if (!empty($inputErrors)) {
                 "email" => $user->email,
             ];
 
-            header("location: /");
+            redirect('/');
 
             exit();
         }

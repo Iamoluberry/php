@@ -35,7 +35,9 @@ if (!empty($inputErrors)) {
             'email' => $user['email'],
         ];
 
-        header("Location: /");
+        session_regenerate_id(true);
+
+        redirect('/');
 
         exit();
     }

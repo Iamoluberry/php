@@ -39,5 +39,20 @@ function basePath($path){
 function view($path, $attributes = []){
     extract($attributes);
 
-    return BASE_PATH . 'views/' . $path;
+    require(BASE_PATH . 'views/' . $path);
+    exit();
+}
+
+function navLink($uri, $addressName, $classProps = ''){
+    echo "
+    <a href=\"$uri\"
+       class=\"" . (urlIs($uri) ? "rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white $classProps" : "rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white $classProps") . "\"
+       aria-current=\"page\">$addressName
+       </a>";
+}
+
+function redirect($uri)
+{
+    header("Location: $uri");
+    exit();
 }
